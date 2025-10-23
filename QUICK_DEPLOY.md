@@ -55,19 +55,34 @@ git push -u origin main
    - Build command: npm run build
    - Publish directory: .next
 
-5. HENÜZ DEPLOY ETME! Environment Variables ekle:
+5. **ZORUNLU:** Environment Variables ekle (Bu adımı atlarsan build FAIL olur!)
 
    "Site configuration" > "Environment variables" > "Add a variable"
 
-   **ÖNEMLİ:** Şu değişkenleri ekle:
+   **Her birini teker teker ekle:**
 
-   NODE_ENV = production
-   MONGODB_URI = mongodb+srv://murad:Wattson5484@nodeexpressprojects.csweoyl.mongodb.net/kodespace
-   NEXTAUTH_SECRET = [openssl ile oluşturduğun secret - 32+ karakter]
-   NEXT_PUBLIC_APP_URL = https://your-site-name.netlify.app
-   NEXTAUTH_URL = https://your-site-name.netlify.app
+   ```
+   Key: NODE_ENV
+   Value: production
+   ───────────────────────────────────
 
-   **NOT:** MONGODB_URI yukarıdaki gibi kalabilir (mevcut Atlas DB'niz)
+   Key: MONGODB_URI
+   Value: mongodb+srv://murad:Wattson5484@nodeexpressprojects.csweoyl.mongodb.net/kodespace
+   ───────────────────────────────────
+
+   Key: NEXTAUTH_SECRET
+   Value: [openssl rand -base64 32 ile oluşturduğun - 32+ karakter ZORUNLU!]
+   ───────────────────────────────────
+
+   Key: NEXT_PUBLIC_APP_URL
+   Value: https://your-site-name.netlify.app
+   ───────────────────────────────────
+
+   Key: NEXTAUTH_URL
+   Value: https://your-site-name.netlify.app
+   ```
+
+   **UYARI:** Her değişkeni ekledikten sonra "Same value for all deploy contexts" seçili olmalı!
 
 6. "Deploys" > "Trigger deploy" > "Deploy site"
 
@@ -110,14 +125,20 @@ Hepsi çalışıyorsa → **BAŞARILI!** 🎉
 
 ## 🐛 Hata Alıyorsan
 
-### "Build failed"
-→ Netlify deploy loglarına bak, hata mesajını oku
+### "Build failed" veya "exit code 1"
+**ÇÖZÜM:** `NETLIFY_FIX.md` dosyasını aç ve adım adım takip et!
+
+En yaygın sebep: **NEXTAUTH_SECRET** environment variable eksik
+→ Netlify'da mutlaka `NEXTAUTH_SECRET` ekle (32+ karakter)
 
 ### "Database connection failed"
 → MONGODB_URI'ı kontrol et, MongoDB Atlas'ta IP whitelist'e 0.0.0.0/0 eklendiğinden emin ol
 
 ### "NextAuth error"
 → NEXTAUTH_URL'in site URL'inle aynı olduğundan emin ol
+
+### Detaylı çözüm için:
+📖 **NETLIFY_FIX.md** - Adım adım troubleshooting rehberi
 
 ---
 
