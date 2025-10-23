@@ -130,7 +130,13 @@ Error: NEXTAUTH_SECRET environment variable is not set
 - ✅ **ÇÖZÜLDü!** `netlify.toml` Node.js 20.11.0 olarak güncellendi
 - GitHub'a push ettiğinizde otomatik çözülecek
 
-### Hata 4: "Module not found: Can't resolve 'mongoose'"
+### Hata 4: "Cannot find module 'tailwindcss'"
+**Çözüm:**
+- ✅ **ÇÖZÜLDÜ!** `tailwindcss`, `postcss`, `autoprefixer` dependencies'e taşındı
+- Netlify production build sırasında bu paketleri yükleyecek
+- GitHub'a push ettiğinizde otomatik çözülecek
+
+### Hata 5: "Module not found: Can't resolve 'mongoose'"
 **Çözüm:**
 - `netlify.toml` dosyasında `external_node_modules` kontrol et
 - Şöyle olmalı:
@@ -140,7 +146,7 @@ Error: NEXTAUTH_SECRET environment variable is not set
   external_node_modules = ["mongoose"]
 ```
 
-### Hata 5: "Build exceeded maximum time limit"
+### Hata 6: "Build exceeded maximum time limit"
 **Çözüm:**
 - `node_modules` dosyasını `.gitignore`'a ekle (zaten var)
 - Gereksiz devDependencies kaldır
