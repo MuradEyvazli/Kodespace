@@ -181,127 +181,130 @@ export default function Snippets() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="relative mb-12">
-          {/* Background Decoration */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-cyan-500/5 rounded-3xl backdrop-blur-sm"></div>
-          <div className="absolute top-4 left-4 w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl"></div>
-          <div className="absolute bottom-4 right-4 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
+        {/* Header - Mobile Optimized */}
+        <div className="relative mb-6 md:mb-12">
+          {/* Background Decoration - Hidden on mobile for cleaner look */}
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-cyan-500/5 rounded-3xl backdrop-blur-sm"></div>
+          <div className="hidden md:block absolute top-4 left-4 w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl"></div>
+          <div className="hidden md:block absolute bottom-4 right-4 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
 
-          <div className="relative bg-white rounded-3xl p-8 border border-gray-200 shadow-xl">
+          <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-200 shadow-xl">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-              <div className="mb-8 lg:mb-0">
-                {/* Main Title */}
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="relative">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mb-6 lg:mb-0">
+                {/* Main Title - Mobile Responsive */}
+                <div className="flex items-center space-x-3 md:space-x-4 mb-3 md:mb-4">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">
+                    <div className="absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">
                       ✓
                     </div>
                   </div>
-                  <div>
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-700 to-indigo-700 bg-clip-text text-transparent mb-2">
+                  <div className="flex-1 min-w-0">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-700 to-indigo-700 bg-clip-text text-transparent mb-2">
                       Code Gallery
                     </h1>
-                    <div className="flex items-center space-x-3">
-                      <span className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm font-medium border border-purple-200">
-                        ✨ Premium Collection
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="px-2 py-1 md:px-3 md:py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-xs md:text-sm font-medium border border-purple-200">
+                        ✨ Premium
                       </span>
-                      <span className="px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-sm font-medium border border-emerald-200">
-                        🚀 Production Ready
+                      <span className="px-2 py-1 md:px-3 md:py-1 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-xs md:text-sm font-medium border border-emerald-200">
+                        🚀 Ready
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-lg font-medium mb-2 max-w-2xl">
+                {/* Description - Hidden on small mobile */}
+                <p className="hidden sm:block text-gray-700 text-sm md:text-lg font-medium mb-1 md:mb-2 max-w-2xl">
                   Discover, learn, and contribute to the world's most innovative code snippets
                 </p>
-                <p className="text-gray-600 text-base max-w-2xl">
+                <p className="hidden md:block text-gray-600 text-sm md:text-base max-w-2xl">
                   Curated by developers, for developers. Find battle-tested solutions and share your expertise with the community.
                 </p>
 
-                {/* Stats Row */}
-                <div className="flex items-center space-x-6 mt-6">
+                {/* Stats Row - Mobile: 2 columns, Tablet+: 3 columns */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-6 mt-4 md:mt-6">
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-white text-sm font-bold">📊</span>
                     </div>
-                    <div>
-                      <div className="text-white font-semibold">{pagination.total || 0}+</div>
+                    <div className="min-w-0">
+                      <div className="text-gray-900 font-semibold text-sm md:text-base truncate">{pagination.total || 0}+</div>
                       <div className="text-gray-600 text-xs">Snippets</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-white text-sm font-bold">👥</span>
                     </div>
-                    <div>
-                      <div className="text-white font-semibold">50K+</div>
-                      <div className="text-gray-600 text-xs">Developers</div>
+                    <div className="min-w-0">
+                      <div className="text-gray-900 font-semibold text-sm md:text-base truncate">50K+</div>
+                      <div className="text-gray-600 text-xs">Devs</div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center space-x-2 col-span-2 sm:col-span-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-white text-sm font-bold">⚡</span>
                     </div>
-                    <div>
-                      <div className="text-white font-semibold">24/7</div>
+                    <div className="min-w-0">
+                      <div className="text-gray-900 font-semibold text-sm md:text-base truncate">24/7</div>
                       <div className="text-gray-600 text-xs">Updated</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                {/* View Mode Toggle */}
-                <div className="flex items-center space-x-2 glass rounded-xl p-1 border border-gray-300">
+              <div className="flex flex-row items-center justify-between sm:justify-start space-x-3 sm:space-x-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-gray-200">
+                {/* View Mode Toggle - Mobile: Icon only, Desktop: With text */}
+                <div className="flex items-center space-x-1 glass rounded-lg md:rounded-xl p-1 border border-gray-300">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`p-3 rounded-lg transition-all duration-300 flex items-center space-x-2 ${
+                    className={`p-2 md:p-3 rounded-lg transition-all duration-300 flex items-center space-x-2 ${
                       viewMode === 'grid'
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-glow scale-105'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-glow'
                         : 'text-gray-600 hover:text-white hover:bg-gray-100'
                     }`}
+                    title="Grid View"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                     </svg>
-                    <span className="hidden sm:block text-sm font-medium">Grid</span>
+                    <span className="hidden lg:block text-sm font-medium">Grid</span>
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`p-3 rounded-lg transition-all duration-300 flex items-center space-x-2 ${
+                    className={`p-2 md:p-3 rounded-lg transition-all duration-300 flex items-center space-x-2 ${
                       viewMode === 'list'
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-glow scale-105'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-glow'
                         : 'text-gray-600 hover:text-white hover:bg-gray-100'
                     }`}
+                    title="List View"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                     </svg>
-                    <span className="hidden sm:block text-sm font-medium">List</span>
+                    <span className="hidden lg:block text-sm font-medium">List</span>
                   </button>
                 </div>
 
                 {session && (
                   <Link
                     href="/create-snippet"
-                    className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-glow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-3 overflow-hidden"
+                    className="group relative px-4 py-2 md:px-8 md:py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white rounded-lg md:rounded-xl font-semibold hover:shadow-glow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-2 md:space-x-3 overflow-hidden flex-1 sm:flex-initial justify-center"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="relative flex items-center space-x-2 md:space-x-3">
+                      <div className="w-5 h-5 md:w-6 md:h-6 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                         </svg>
                       </div>
-                      <span>Create Snippet</span>
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm md:text-base whitespace-nowrap">Create</span>
+                      <div className="hidden md:block w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                     </div>
                   </Link>
                 )}
@@ -310,34 +313,35 @@ export default function Snippets() {
           </div>
         </div>
 
-        {/* Advanced Filters */}
-        <div className="glass-strong rounded-3xl p-8 mb-8 border border-purple-500/20">
-          <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {/* Advanced Filters - Mobile Optimized */}
+        <div className="glass-strong rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 border border-purple-500/20">
+          <div className="flex items-center space-x-2 md:space-x-3 mb-4 md:mb-6">
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg md:rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-white">Smart Filters</h3>
-              <p className="text-gray-600 text-sm">Find exactly what you're looking for</p>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 truncate">Smart Filters</h3>
+              <p className="hidden sm:block text-gray-600 text-xs md:text-sm truncate">Find exactly what you're looking for</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-            {/* Search */}
-            <div className="lg:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Search Query</label>
+          {/* Mobile: Stack all filters, Tablet: 2 cols, Desktop: 3 cols, XL: 6 cols */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4 lg:gap-6">
+            {/* Search - Mobile: Full width, Desktop: 2 columns */}
+            <div className="sm:col-span-2 lg:col-span-2">
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Search Query</label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-600 group-focus-within:text-purple-400 transition-colors duration-300">
+                <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-600 group-focus-within:text-purple-400 transition-colors duration-300 flex-shrink-0">
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
                 <input
                   type="text"
-                  placeholder="Search snippets, tags, or authors..."
-                  className="w-full pl-12 pr-4 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 shadow-sm"
+                  placeholder="Search..."
+                  className="w-full pl-10 md:pl-12 pr-3 md:pr-4 py-2.5 md:py-3 lg:py-4 bg-white border-2 border-gray-300 rounded-xl md:rounded-2xl text-sm md:text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 shadow-sm"
                   value={filters.search}
                   onChange={(e) => handleFilterChange('search', e.target.value)}
                 />
@@ -346,10 +350,10 @@ export default function Snippets() {
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Category</label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-12 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
+                  className="w-full pl-3 md:pl-4 pr-10 md:pr-12 py-2.5 md:py-3 lg:py-4 bg-white border-2 border-gray-300 rounded-xl md:rounded-2xl text-sm md:text-base text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
                   value={filters.category}
                   onChange={(e) => handleFilterChange('category', e.target.value)}
                 >
@@ -359,8 +363,8 @@ export default function Snippets() {
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -369,20 +373,20 @@ export default function Snippets() {
 
             {/* Language */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Language</label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-12 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
+                  className="w-full pl-3 md:pl-4 pr-10 md:pr-12 py-2.5 md:py-3 lg:py-4 bg-white border-2 border-gray-300 rounded-xl md:rounded-2xl text-sm md:text-base text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
                   value={filters.language}
                   onChange={(e) => handleFilterChange('language', e.target.value)}
                 >
-                  <option value="" className="bg-white text-gray-900">💻 All Languages</option>
+                  <option value="" className="bg-white text-gray-900">💻 All</option>
                   {languages.map((lang) => (
                     <option key={lang} value={lang} className="bg-white text-gray-900">{lang}</option>
                   ))}
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -391,20 +395,20 @@ export default function Snippets() {
 
             {/* Difficulty */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Difficulty</label>
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Difficulty</label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-12 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
+                  className="w-full pl-3 md:pl-4 pr-10 md:pr-12 py-2.5 md:py-3 lg:py-4 bg-white border-2 border-gray-300 rounded-xl md:rounded-2xl text-sm md:text-base text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
                   value={filters.difficulty}
                   onChange={(e) => handleFilterChange('difficulty', e.target.value)}
                 >
-                  <option value="" className="bg-white text-gray-900">📊 All Levels</option>
+                  <option value="" className="bg-white text-gray-900">📊 All</option>
                   <option value="beginner" className="bg-white text-gray-900">🌱 Beginner</option>
                   <option value="intermediate" className="bg-white text-gray-900">⚡ Intermediate</option>
                   <option value="advanced" className="bg-white text-gray-900">🔥 Advanced</option>
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -413,20 +417,20 @@ export default function Snippets() {
 
             {/* Sort */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Sort By</label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-12 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
+                  className="w-full pl-3 md:pl-4 pr-10 md:pr-12 py-2.5 md:py-3 lg:py-4 bg-white border-2 border-gray-300 rounded-xl md:rounded-2xl text-sm md:text-base text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-400 appearance-none cursor-pointer shadow-sm"
                   value={filters.sortBy}
                   onChange={(e) => handleFilterChange('sortBy', e.target.value)}
                 >
-                  <option value="newest" className="bg-white text-gray-900">📅 Newest First</option>
-                  <option value="popular" className="bg-white text-gray-900">🔥 Most Popular</option>
-                  <option value="mostLiked" className="bg-white text-gray-900">❤️ Most Liked</option>
-                  <option value="verified" className="bg-white text-gray-900">✅ Verified Only</option>
+                  <option value="newest" className="bg-white text-gray-900">📅 Newest</option>
+                  <option value="popular" className="bg-white text-gray-900">🔥 Popular</option>
+                  <option value="mostLiked" className="bg-white text-gray-900">❤️ Liked</option>
+                  <option value="verified" className="bg-white text-gray-900">✅ Verified</option>
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -434,13 +438,13 @@ export default function Snippets() {
             </div>
           </div>
 
-          {/* Quick Filter Chips */}
-          <div className="flex flex-wrap gap-4 mt-8">
-            <div className="flex items-center space-x-2 mb-2">
+          {/* Quick Filter Chips - Mobile Optimized */}
+          <div className="flex flex-wrap gap-2 md:gap-4 mt-4 md:mt-8">
+            <div className="hidden sm:flex items-center space-x-2 mb-2 w-full sm:w-auto">
               <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-              <span className="text-gray-800 text-sm font-medium">Quick Filters</span>
+              <span className="text-gray-800 text-xs md:text-sm font-medium">Quick Filters</span>
             </div>
-            <div className="flex flex-wrap gap-3 w-full">
+            <div className="flex flex-wrap gap-2 md:gap-3 w-full">
               <button
                 onClick={() => handleFilterChange('verified', filters.verified === 'true' ? '' : 'true')}
                 className={`group relative px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 flex items-center space-x-3 overflow-hidden ${
@@ -564,21 +568,21 @@ export default function Snippets() {
           </div>
         </div>
 
-        {/* Analytics Dashboard */}
+        {/* Analytics Dashboard - Mobile Optimized */}
         {!loading && !error && (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
-            <div className="glass-strong rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 group hover:scale-105">
-              <div className="flex items-center space-x-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 mb-6 md:mb-8">
+            <div className="glass-strong rounded-xl md:rounded-2xl p-3 md:p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 group hover:scale-105">
+              <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300 flex-shrink-0">
+                  <svg className="w-5 h-5 md:w-7 md:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                   </svg>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                <div className="min-w-0 flex-1">
+                  <div className="text-xl md:text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors truncate">
                     {pagination.total || 0}
                   </div>
-                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">Code Snippets</div>
+                  <div className="text-gray-600 text-xs md:text-sm font-medium uppercase tracking-wide truncate">Snippets</div>
                 </div>
               </div>
             </div>
