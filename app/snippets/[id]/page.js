@@ -283,128 +283,137 @@ export default function SnippetDetail({ params }) {
     <div className="min-h-screen bg-white pt-16">
       <Navbar />
 
-      <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="bg-white rounded-lg shadow mb-6">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-2">
-                  <h1 className="text-2xl font-bold text-gray-900">{snippet.title}</h1>
+      <div className="max-w-6xl mx-auto py-4 md:py-8 px-4 sm:px-6 lg:px-8">
+        {/* Header - Mobile Optimized */}
+        <div className="bg-white rounded-xl md:rounded-lg shadow mb-4 md:mb-6">
+          <div className="px-4 sm:px-6 py-3 md:py-4 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 md:gap-0">
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-2 md:mb-2">
+                  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 break-words">{snippet.title}</h1>
                   {snippet.isVerified && (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    <span className="inline-flex items-center px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium bg-green-100 text-green-800 flex-shrink-0">
                       ✓ Verified
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs md:text-sm text-gray-600 mb-3">
                   <Link
                     href={`/profile/${snippet.author._id}`}
-                    className="flex items-center group hover:bg-gray-50 px-2 py-1 rounded-lg transition-all duration-300"
+                    className="flex items-center group hover:bg-gray-50 px-2 py-1 rounded-lg transition-all duration-300 self-start"
                   >
-                    <div className="h-8 w-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-sm font-medium mr-2 group-hover:scale-110 transition-transform">
+                    <div className="h-7 w-7 md:h-8 md:w-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xs md:text-sm font-medium mr-2 group-hover:scale-110 transition-transform flex-shrink-0">
                       <span className="text-white">{snippet.author.name.charAt(0).toUpperCase()}</span>
                     </div>
-                    <span className="font-medium group-hover:text-purple-600 transition-colors">{snippet.author.name}</span>
-                    <span className={`ml-2 px-2 py-1 rounded text-xs ${getRoleColor(snippet.author.role)}`}>
-                      {snippet.author.role.replace('-', ' ')}
-                    </span>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                      <span className="font-medium group-hover:text-purple-600 transition-colors truncate">{snippet.author.name}</span>
+                      <span className={`px-2 py-0.5 rounded text-xs ${getRoleColor(snippet.author.role)} self-start`}>
+                        {snippet.author.role.replace('-', ' ')}
+                      </span>
+                    </div>
                   </Link>
-                  <span>•</span>
-                  <span>{formatDate(snippet.createdAt)}</span>
+                  <span className="hidden sm:inline">•</span>
+                  <span className="text-xs truncate">{formatDate(snippet.createdAt)}</span>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                <div className="flex flex-wrap gap-1.5 md:gap-2">
+                  <span className="inline-flex items-center px-2 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium bg-gray-100 text-gray-800">
                     {snippet.language}
                   </span>
-                  <span className={`inline-flex items-center px-2 py-1 rounded-full text-sm font-medium ${getDifficultyColor(snippet.difficulty)}`}>
+                  <span className={`inline-flex items-center px-2 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium ${getDifficultyColor(snippet.difficulty)}`}>
                     {snippet.difficulty}
                   </span>
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  <span className="inline-flex items-center px-2 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium bg-blue-100 text-blue-800">
                     {snippet.category.replace('-', ' ')}
                   </span>
-                  {snippet.tags.map((tag) => (
-                    <span key={tag} className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                  {snippet.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="inline-flex items-center px-2 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium bg-purple-100 text-purple-800">
                       #{tag}
                     </span>
                   ))}
+                  {snippet.tags.length > 3 && (
+                    <span className="inline-flex items-center px-2 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium bg-gray-100 text-gray-600">
+                      +{snippet.tags.length - 3}
+                    </span>
+                  )}
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3">
+              {/* Action Buttons - Mobile: Stack below, Desktop: Side by side */}
+              <div className="flex items-center gap-2 sm:space-x-3 flex-shrink-0">
                 {session && (
                   <>
                     <button
                       onClick={handleLike}
-                      className={`group flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      className={`group flex items-center space-x-1 md:space-x-2 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 flex-1 sm:flex-initial justify-center ${
                         isLiked
                           ? 'bg-red-50 text-red-700 border border-red-200 hover:bg-red-100'
                           : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-red-50 hover:text-red-700 hover:border-red-200'
                       }`}
                     >
                       <span className="transition-transform group-hover:scale-110">❤️</span>
-                      <span>{snippet.usage.likes}</span>
+                      <span className="font-medium">{snippet.usage.likes}</span>
                     </button>
                     <button
                       onClick={handleBookmark}
-                      className={`group flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      className={`group flex items-center space-x-1 md:space-x-2 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 flex-1 sm:flex-initial justify-center ${
                         isBookmarked
                           ? 'bg-yellow-50 text-yellow-700 border border-yellow-200 hover:bg-yellow-100'
                           : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-yellow-50 hover:text-yellow-700 hover:border-yellow-200'
                       }`}
                     >
                       <span className="transition-transform group-hover:scale-110">🔖</span>
-                      <span>{snippet.usage.bookmarks}</span>
+                      <span className="font-medium">{snippet.usage.bookmarks}</span>
                     </button>
                   </>
                 )}
-                <div className="flex items-center space-x-2 px-4 py-2 bg-gray-50 text-gray-700 border border-gray-200 rounded-lg text-sm">
+                <div className="flex items-center space-x-1 md:space-x-2 px-3 md:px-4 py-1.5 md:py-2 bg-gray-50 text-gray-700 border border-gray-200 rounded-lg text-xs md:text-sm flex-1 sm:flex-initial justify-center">
                   <span>👀</span>
-                  <span>{snippet.usage.views}</span>
+                  <span className="font-medium">{snippet.usage.views}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="px-6 py-4">
-            <p className="text-gray-700">{snippet.description}</p>
+          <div className="px-4 sm:px-6 py-3 md:py-4">
+            <p className="text-sm md:text-base text-gray-700 leading-relaxed">{snippet.description}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Mobile: Stack vertically, Desktop: Sidebar layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Code Block */}
-            <div className="bg-white rounded-lg shadow">
-              <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200">
-                <span className="text-sm font-medium text-gray-700">
+          <div className="lg:col-span-2 space-y-4 md:space-y-6">
+            {/* Code Block - Mobile Optimized */}
+            <div className="bg-white rounded-xl md:rounded-lg shadow">
+              <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 md:py-3 border-b border-gray-200">
+                <span className="text-xs md:text-sm font-medium text-gray-700 truncate">
                   Code - {snippet.language}
                 </span>
-                <span className="text-xs text-gray-500">
-                  {snippet.license} License
+                <span className="text-xs text-gray-500 whitespace-nowrap ml-2">
+                  {snippet.license}
                 </span>
               </div>
-              <div className="p-6">
+              <div className="p-3 sm:p-4 md:p-6 overflow-x-auto">
                 <CodeBlock
                   code={snippet.code}
                   language={snippet.language}
                   showCopyButton={true}
-                  maxHeight="500px"
+                  maxHeight="400px"
                 />
               </div>
             </div>
 
-            {/* Comments */}
-            <div className="bg-white rounded-lg shadow">
-              <div className="px-6 py-3 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">
+            {/* Comments - Mobile Optimized */}
+            <div className="bg-white rounded-xl md:rounded-lg shadow">
+              <div className="px-4 sm:px-6 py-2.5 md:py-3 border-b border-gray-200">
+                <h3 className="text-base md:text-lg font-medium text-gray-900">
                   Comments ({snippet.comments.length})
                 </h3>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Add Comment Form */}
                 {session ? (
                   <form onSubmit={handleAddComment} className="mb-6">
@@ -473,11 +482,11 @@ export default function SnippetDetail({ params }) {
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Verification */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Verification</h3>
+          {/* Sidebar - Mobile: Stacked below, Desktop: Sidebar */}
+          <div className="space-y-4 md:space-y-6">
+            {/* Verification - Mobile Optimized */}
+            <div className="bg-white rounded-xl md:rounded-lg shadow p-4 sm:p-6">
+              <h3 className="text-base md:text-lg font-medium text-gray-900 mb-3 md:mb-4">Verification</h3>
 
               {snippet.isVerified ? (
                 <div>
@@ -539,9 +548,9 @@ export default function SnippetDetail({ params }) {
               )}
             </div>
 
-            {/* Snippet Info */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Details</h3>
+            {/* Snippet Info - Mobile Optimized */}
+            <div className="bg-white rounded-xl md:rounded-lg shadow p-4 sm:p-6">
+              <h3 className="text-base md:text-lg font-medium text-gray-900 mb-3 md:mb-4">Details</h3>
               <dl className="space-y-3">
                 <div>
                   <dt className="text-sm font-medium text-gray-500">License</dt>
@@ -558,27 +567,27 @@ export default function SnippetDetail({ params }) {
               </dl>
             </div>
 
-            {/* Actions */}
+            {/* Actions - Mobile Optimized */}
             {isOwner && (
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Manage Snippet</h3>
-                <div className="space-y-3">
+              <div className="bg-white rounded-xl md:rounded-lg shadow p-4 sm:p-6">
+                <h3 className="text-base md:text-lg font-medium text-gray-900 mb-3 md:mb-4">Manage Snippet</h3>
+                <div className="space-y-2 md:space-y-3">
                   <button
                     onClick={handleEdit}
-                    className="w-full group flex items-center justify-center space-x-2 bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-200 font-medium"
+                    className="w-full group flex items-center justify-center space-x-2 bg-indigo-600 text-white px-4 py-2.5 md:py-3 rounded-lg hover:bg-indigo-700 transition-all duration-200 font-medium text-sm md:text-base"
                   >
                     <span>✏️</span>
                     <span>Edit Snippet</span>
                   </button>
                   <button
                     onClick={handleDelete}
-                    className="w-full group flex items-center justify-center space-x-2 bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 transition-all duration-200 font-medium"
+                    className="w-full group flex items-center justify-center space-x-2 bg-red-600 text-white px-4 py-2.5 md:py-3 rounded-lg hover:bg-red-700 transition-all duration-200 font-medium text-sm md:text-base"
                   >
                     <span>🗑️</span>
                     <span>Delete Snippet</span>
                   </button>
                 </div>
-                <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                <div className="mt-3 md:mt-4 p-2.5 md:p-3 bg-gray-50 rounded-lg">
                   <p className="text-xs text-gray-600">
                     💡 You can edit or delete this snippet because you&apos;re the author
                   </p>
