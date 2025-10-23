@@ -2,7 +2,9 @@
 
 ## ❌ Hata: "build.command failed with exit code 1"
 
-Bu hata genellikle **eksik environment variables** yüzünden olur.
+Bu hata iki sebepten olabilir:
+1. **Node.js versiyonu uyumsuz** (çözüldü ✅)
+2. **Eksik environment variables**
 
 ---
 
@@ -123,7 +125,12 @@ Error: NEXTAUTH_SECRET environment variable is not set
 - MongoDB Atlas'ta IP whitelist'e `0.0.0.0/0` eklenmiş mi?
 - Connection string doğru mu?
 
-### Hata 3: "Module not found: Can't resolve 'mongoose'"
+### Hata 3: "Node.js version ... is required"
+**Çözüm:**
+- ✅ **ÇÖZÜLDü!** `netlify.toml` Node.js 20.11.0 olarak güncellendi
+- GitHub'a push ettiğinizde otomatik çözülecek
+
+### Hata 4: "Module not found: Can't resolve 'mongoose'"
 **Çözüm:**
 - `netlify.toml` dosyasında `external_node_modules` kontrol et
 - Şöyle olmalı:
@@ -133,7 +140,7 @@ Error: NEXTAUTH_SECRET environment variable is not set
   external_node_modules = ["mongoose"]
 ```
 
-### Hata 4: "Build exceeded maximum time limit"
+### Hata 5: "Build exceeded maximum time limit"
 **Çözüm:**
 - `node_modules` dosyasını `.gitignore`'a ekle (zaten var)
 - Gereksiz devDependencies kaldır
