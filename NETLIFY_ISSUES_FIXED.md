@@ -31,6 +31,26 @@ Error: Cannot find module 'tailwindcss'
 
 ---
 
+### Hata 3: TypeScript Type Definitions Bulunamadı
+```
+Error: Please install @types/react
+It looks like you're trying to use TypeScript but do not have the required package(s) installed.
+```
+
+**Neden?**
+- TypeScript ve type definitions devDependencies'deydi
+- Next.js build sırasında bu paketlere ihtiyaç var
+- Netlify production build'de devDependencies yüklenmiyor
+
+**Çözüm:** ✅
+- `typescript` → dependencies'e taşındı
+- `@types/react` → dependencies'e taşındı
+- `@types/react-dom` → dependencies'e taşındı
+- `@types/node` → dependencies'e taşındı
+- `@types/bcryptjs` → dependencies'e taşındı
+
+---
+
 ## ✅ Yapılan Tüm Değişiklikler
 
 ### 1. netlify.toml
@@ -47,10 +67,15 @@ Error: Cannot find module 'tailwindcss'
     "npm": ">=9.0.0"
   },
   "dependencies": {
-    // Eklenenler:
+    // devDependencies'den taşınanlar:
     "tailwindcss": "^3.4.15",
     "postcss": "^8.5.6",
-    "autoprefixer": "^10.4.21"
+    "autoprefixer": "^10.4.21",
+    "typescript": "^5.9.3",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "@types/node": "^24.7.0",
+    "@types/bcryptjs": "^2.4.6"
   }
 }
 ```
