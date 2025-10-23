@@ -83,9 +83,9 @@ const nextConfig = {
     },
   }),
 
-  // Optimize output - Use 'export' for Netlify static deployment
+  // Optimize output - Use 'standalone' for Netlify (with serverless functions)
   // Use 'standalone' for Docker/server deployment
-  output: process.env.NETLIFY ? 'export' : 'standalone',
+  output: 'standalone',
 
   // PoweredByHeader
   poweredByHeader: false,

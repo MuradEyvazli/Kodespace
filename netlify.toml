@@ -4,16 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "18.17.0"
-  NPM_VERSION = "9.0.0"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Redirects and rewrites
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 # Headers for security
 [[headers]]
