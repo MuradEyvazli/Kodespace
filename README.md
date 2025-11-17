@@ -1,5 +1,5 @@
 # 🚀 KODESPACE - Developer Community Platform
-**Site;** https://kodespace.netlify.app/create-snippet
+**Site;** [https://kodespace.netlify.app/create-snippet](https://kodespace.netlify.app)
 **Date:** October 7, 2025
 **Status:** ✅ ENTERPRISE PRODUCTION READY
 **Development Time:** Professionally Hardened with TypeScript, Security & Performance
